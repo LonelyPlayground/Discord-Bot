@@ -6,7 +6,7 @@ from Erik_Quotes.quote import *
 #API refrence sheet - http://discordpy.readthedocs.io/en/latest/api.html#client
 #bot commands framework https://discordpy.readthedocs.io/en/rewrite/ext/commands/commands.html
 Client = discord.Client()
-bot_prefix = "$"
+bot_prefix = "#"
 client = commands.Bot(command_prefix = bot_prefix)
 myToken = Token()
 token = myToken.getToken()
