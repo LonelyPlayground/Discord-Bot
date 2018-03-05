@@ -1,6 +1,7 @@
 from random import *
 class Quote:
 	def __init__(self):
+		#array of erik quotes, plan to eventually put this into google sheets
 		self.quotes = [
 		"“I’m not crazy. I’m enlightened.”"
 		,"Brandon-“Erik, start counting backwards from 100.” Erik-“Seven– fuck.”"
@@ -85,6 +86,7 @@ class Quote:
 		,"“Deadlydad69”"
 		,"“MAGES SHOULDN'T WEAR JACK SHIT”, “Unless your pants give you mana or some shit, you shouldn’t be wearing them!”"
 		]
+	#randomly selects a erik quote by calling the array at a random index from 0 to the array list
 	def getQuote(self):
 		return self.quotes[randint(0, len(self.quotes))]
 		
