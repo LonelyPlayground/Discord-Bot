@@ -2,11 +2,8 @@ from random import *
 class Quote:
 	def __init__(self):
 		self.quotes = [
-<<<<<<< HEAD
-		"“I’m not crazy. I’m enlightened.”"
-=======
+		##Tag each quote to the relevant people so we can request specific people's quotes##
 		"“I’m not crazy. I’m enlightened.” -Erik"
->>>>>>> master
 		,"“Erik, start counting backwards from 100.”-Brandon “Seven– fuck.”-Erik"
 		,"“I’m going to speak in Broman Morse code. Broman, Broman, Broman, Brroooooman, Brroooooman, Brroooooman, Broman, Broman, Broman. That SOS.” -Erik"
 		,"“No knifu no lifu” -Erik"
