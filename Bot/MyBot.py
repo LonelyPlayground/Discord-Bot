@@ -34,7 +34,7 @@ async def quote(ctx):
 #TODO: save quotes in a spread sheet and allow users to add to it
 @client.command(pass_context = True)
 async def add_quote(ctx):
-	await client.say("TODO, Contact @Blast38#9189 or other contributers and make him get to work!")
+	await client.say("TODO, Contact <@101444971701207040> or other contributers and make him get to work!")
 #TODO have a data base of users and a balence, then allow them to gamble by making a session and having them roll, then having the lowest roll pay the difference to the highest roll.
 @client.command(pass_context = True)
 async def gamble(ctx):
