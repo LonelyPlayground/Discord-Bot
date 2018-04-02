@@ -38,6 +38,6 @@ async def add_quote(ctx):
 #TODO have a data base of users and a balence, then allow them to gamble by making a session and having them roll, then having the lowest roll pay the difference to the highest roll.
 @client.command(pass_context = True)
 async def gamble(ctx):
-	await client.say("TODO, Contact @Blast38#9189 or other contributers and make him get to work!")
+	await client.say("TODO, Contact <@102910284225593344> or other contributers and make him get to work!")
 #runs client
 client.run(token)
