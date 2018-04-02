@@ -1,4 +1,7 @@
+import sys
+import os
 import discord
+import asyncio
 from discord.ext.commands import Bot
 from discord.ext import commands
 from Token.Token import *
@@ -19,6 +22,16 @@ async def on_ready():
 	print("Name: " + client.user.name)
 	print("ID: " + client.user.id)
 #responds with "pong" when a user types ping
+#@client.event
+#async def on_message(message):
+	#if message.content.startswith('#hi '):
+#	user = message.author.id
+#	await client.send_message(message.author,"Hi, <@%s>"%(user,))
+#replies to a users dm if they message #hi
+@client.command(pass_context = True)
+async def hi(context):
+	user = context.author.id
+	await client.say("Hi, <@%s>"%(user,))
 @client.command(pass_context = True)
 async def ping(ctx):
 	await client.say("Pong!")
