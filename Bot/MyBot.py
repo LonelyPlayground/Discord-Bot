@@ -28,9 +28,9 @@ async def on_ready():
 #	user = message.author.id
 #	await client.send_message(message.author,"Hi, <@%s>"%(user,))
 #replies to a users dm if they message #hi
-@client.command(pass_context = True)
-async def hi(context):
-	user = context.author.id
+@bot.command()
+async def hi(cxt):
+	user = cxt.author.id
 	await client.say("Hi, <@%s>"%(user,))
 @client.command(pass_context = True)
 async def ping(ctx):

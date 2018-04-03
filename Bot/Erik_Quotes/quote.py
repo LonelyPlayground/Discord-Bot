@@ -85,5 +85,4 @@ class Quote:
 		,"“MAGES SHOULDN'T WEAR JACK SHIT”, “Unless your pants give you mana or some shit, you shouldn’t be wearing them!” -Erik"
 		]
 	def getQuote(self):
-		return self.quotes[randint(0, len(self.quotes))]
-		
+		return self.quotes[randint(0, (len(self.quotes) - 1))]
