@@ -3,6 +3,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 from Token.Token import *
 from Erik_Quotes.quote import *
+from Gambling.gambling import *
 #API refrence sheet - http://discordpy.readthedocs.io/en/latest/api.html#client
 #bot commands framework https://discordpy.readthedocs.io/en/rewrite/ext/commands/commands.html
 Client = discord.Client()
@@ -11,8 +12,9 @@ client = commands.Bot(command_prefix = bot_prefix)
 myToken = Token()
 token = myToken.getToken()
 eQuote = Quote()
+house = Gamble()
 
-#prints in command line to show that the bot is online	
+#prints in command line to show that the bot is online
 @client.event
 async def on_ready():
 	print("Bot Online!")
@@ -29,15 +31,20 @@ async def memes(ctx):
 #responds with a random Erik quote
 @client.command(pass_context = True)
 async def quote(ctx):
-	newQuote = eQuote.getQuote()	
+	newQuote = eQuote.getQuote()
 	await client.say(newQuote)
 #TODO: save quotes in a spread sheet and allow users to add to it
 @client.command(pass_context = True)
 async def add_quote(ctx):
 	await client.say("TODO, Contact @Blast38#9189 or other contributers and make him get to work!")
+#users roll between set amounts
+@client.command(pass_context = True)
+async def roll(ctx, *args):
+	roll = house.roll(args)
+	await client.say(roll)
 #TODO have a data base of users and a balence, then allow them to gamble by making a session and having them roll, then having the lowest roll pay the difference to the highest roll.
 @client.command(pass_context = True)
-async def gamble(ctx):	
+async def gamble(ctx):
 	await client.say("TODO, Contact @Blast38#9189 or other contributers and make him get to work!")
 #runs client
 client.run(token)
