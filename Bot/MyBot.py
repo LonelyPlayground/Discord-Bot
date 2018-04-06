@@ -24,7 +24,7 @@ client = commands.Bot(command_prefix = bot_prefix)
 myToken = Token()
 token = myToken.getToken()
 eQuotes = Quote()
-aQuotes = eQuotes.getQuotes
+aQuotes = eQuotes.getQuotes #not currently used
 today = datetime.datetime.now()
 
 #sheets api stuff
@@ -91,9 +91,10 @@ async def add_quote(ctx, arg1, arg2, *args):
 		await client.say("No date given so defaulted to today (%s)"%arg3)
 	else:
 		arg3 = args[0]
+	arg1 = "“%s”"%arg1
 	row = [arg1, arg2, arg3]
 	sheet.append_row(row, value_input_option='USER_ENTERED')
-	await client.say("Quote added by <@%s>"%ctx.message.author.id)
+	await client.say("Quote added by <@%s>, see it here: https://docs.google.com/spreadsheets/d/1tXI_ZYpqUoIuKiPrE4A5UzDKbSTpkw1BvvXf7RU1ofI/edit#gid=0"%ctx.message.author.id)
 
 #TODO have a data base of users and a balence, then allow them to gamble by making a session and having them roll, then having the lowest roll pay the difference to the highest roll.
 @client.command(pass_context=True)
