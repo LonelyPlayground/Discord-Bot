@@ -79,3 +79,46 @@
 		, ["“There’s no way we could win this game”", "Erik"]
 		, ["“Deadlydad69”", "Erik"]
 		, ["“MAGES SHOULDN'T WEAR JACK SHIT”, “Unless your pants give you mana or some shit, you shouldn’t be wearing them!”", "Erik"]]
+
+			i = -1
+	var = 'm'
+	newS = []
+	month = []
+	day = []
+	year = []
+	for c in date:
+		i = i + 1
+		print("I: ")
+		print(i)
+		print("Var: ")
+		print(var)
+		print("C: ")
+		print(var)
+		if c == '/' and not ('/' in newS):
+			var = 'd'
+			print("Var: " + var)
+		elif c == '/':
+			var = 'y'
+			print("Var: " + var)
+		else:
+			if var == 'm':
+				month.append(c)
+				print("Month: ")
+				print(month)
+			elif var == 'd':
+				day.append(c)
+				print("Day: ")
+				print(day)
+			elif var == 'y':
+				year.append(c)
+				print("Year: ")
+				print(year)
+		newS.append(c)
+		print("NewS:")
+		print(newS)
+	print("Month: ")
+	print(month)
+	print("Day: ")
+	print(day)
+	print("Year: ")
+	print(year)
