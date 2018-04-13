@@ -3,7 +3,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 from Token.Token import *
 from Erik_Quotes.quote import *
-from Gambling.gambling import *
+from gambling.gambling import *
 #API refrence sheet - http://discordpy.readthedocs.io/en/latest/api.html#client
 #bot commands framework https://discordpy.readthedocs.io/en/rewrite/ext/commands/commands.html
 Client = discord.Client()
@@ -40,11 +40,15 @@ async def add_quote(ctx):
 #users roll between set amounts
 @client.command(pass_context = True)
 async def roll(ctx, *args):
-	roll = house.roll(args)
+	roll = house.roll(args, ctx.message.author.id)
 	await client.say(roll)
 #TODO have a data base of users and a balence, then allow them to gamble by making a session and having them roll, then having the lowest roll pay the difference to the highest roll.
 @client.command(pass_context = True)
-async def gamble(ctx):
+async def gamble(ctx, *args):
+	house.gambling_init
+	await client.say("TODO, Contact @Blast38#9189 or other contributers and make him get to work!")
+@client.command(pass_context = True)
+async def stop_join(ctx):
 	await client.say("TODO, Contact @Blast38#9189 or other contributers and make him get to work!")
 #runs client
 client.run(token)
