@@ -122,3 +122,22 @@
 	print(day)
 	print("Year: ")
 	print(year)
+
+
+
+
+	#@client.event
+#async def on_message(message):
+#    if message.author == client.user:
+#        return
+#    if message.content.startswith('#hello'):
+#        await message.channel.send('Hello!')
+
+
+
+#responds with "pong" when a user types ping
+#@client.event
+#async def on_message(message):
+	#if message.content.startswith('#hi '):
+#	user = ctx.message.author.id
+#	await client.send_message(message.author,"Hi, <@%s>"%(user,))

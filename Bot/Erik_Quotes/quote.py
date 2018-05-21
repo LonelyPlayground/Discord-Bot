@@ -1,8 +1,7 @@
 from random import *
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import pprint
-
+#Sheets API
 scope = ['http://spreadsheets.google.com/feeds']
 creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
 client = gspread.authorize(creds)
@@ -11,7 +10,7 @@ sheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1tXI_ZYpqUoIu
 class Quote:
 	def __init__(self):
 
-		self.quotes = sheet.get_all_records(empty2zero=False, head=1, default_blank='')
+		self.quotes = sheet.get_all_records(empty2zero=False, head=1, default_blank='')#Uses sheets API to get everything from the google sheet
 
 	def getRandQuote(self):
 		rowcount = len(self.quotes)
