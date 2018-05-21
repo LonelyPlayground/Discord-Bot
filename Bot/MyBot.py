@@ -6,7 +6,10 @@ from discord.ext import commands
 from discord.ext.commands import *
 from Token.Token import *
 from Erik_Quotes.quote import *
+from Gambling.gambling import *
+from Gambling.gamblingHelpers import rollFunc, activeSessions
 import datetime
+
 #API refrence sheet - http://discordpy.readthedocs.io/en/latest/api.html#client
 #bot commands framework https://discordpy.readthedocs.io/en/rewrite/ext/commands/commands.html
 
@@ -60,6 +63,7 @@ def checkDate(date):
 	return "no error"
 
 #This is from the Discord API and it prints info about the bot on startup to make sure it is working
+
 @client.event
 async def on_ready():
 	print("Bot Online!")
@@ -139,6 +143,37 @@ async def ping(ctx):
 @client.command(pass_context=True)
 async def memes(ctx):
 	await client.say(":thinking:")
+  
+@client.command(pass_context = True)
+async def roll(ctx, *args):
+	rolled = rollFunc(args, ctx.message.author.id)
+	await client.say(rolled)
+#TODO have a data base of users and a balence, then allow them to gamble by making a session and having them roll, then having the lowest roll pay the difference to the highest roll.
+@client.command(pass_context = True)
+async def gamble(ctx, *args):
+	house = Gamble()
+	start = house.gambleStart(args, ctx.message.author.id)
+	await client.say(start)
+@client.command(pass_context = True)
+async def join(ctx, *args):
+	global activeSessions
+	if not len(args) == 1:
+		await client.say("Usage: #join <sessionID>")
+	else:
+		try:
+			await client.say(activeSessions[int(args[0])].join(ctx.message.author.id))
+		except:
+			await client.say("No active session at this ID")
+@client.command(pass_context = True)
+async def start_roll(ctx, *args):
+	global activeSessions
+	if not len(args) == 1:
+		await client.say("Usage: #start_roll <sessionID>")
+	else:
+		try:
+			await client.say(activeSessions[int(args[0])].start_roll())
+		except:
+			await client.say("No active session at this ID")
 
 #runs client using Discord API
 client.run(token)
