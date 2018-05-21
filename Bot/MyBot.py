@@ -177,3 +177,6 @@ async def start_roll(ctx, *args):
 
 #runs client using Discord API
 client.run(token)
+
+if __name__ == "__main__":
+        app.run()
