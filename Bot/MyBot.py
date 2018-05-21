@@ -68,15 +68,5 @@ async def start_roll(ctx, *args):
 			await client.say(activeSessions[int(args[0])].start_roll())
 		except:
 			await client.say("No active session at this ID")
-@client.event
-async def results(ctx, *args):
-	global activeSessions
-	if not len(args) == 1:
-		await client.say("Usage: #stop_roll <sessionID>")
-	else:
-		try:
-			await client.say(activeSessions[int(args[0])].results())
-		except:
-			await client.say("No active session at this ID")
 #runs client
 client.run(token)
