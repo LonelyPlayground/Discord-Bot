@@ -1,90 +1,20 @@
 from random import *
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+#Sheets API
+scope = ['http://spreadsheets.google.com/feeds']
+creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+client = gspread.authorize(creds)
+sheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1tXI_ZYpqUoIuKiPrE4A5UzDKbSTpkw1BvvXf7RU1ofI/edit#gid=0').sheet1
+
 class Quote:
 	def __init__(self):
-		self.quotes = [
-		##Tag each quote to the relevant people so we can request specific people's quotes##
-		"“I’m not crazy. I’m enlightened.” -Erik"
-		,"“Erik, start counting backwards from 100.”-Brandon “Seven– fuck.”-Erik"
-		,"“I’m going to speak in Broman Morse code. Broman, Broman, Broman, Brroooooman, Brroooooman, Brroooooman, Broman, Broman, Broman. That SOS.” -Erik"
-		,"“No knifu no lifu” -Erik"
-		,"“How could I lose these statistically average rolls???” -Erik"
-		,"“Such pigs don't deserve to touch enlightened beings such as myself” -Erik"
-		,"“Satan Is My Only Senpai” -Erik"
-		,"“They don’t have to be free as long as they’re happy???” -Erik"
-		,"“That’s a poor quality snail right there” -Erik"
-		,"“Fuck me Sans” -Erik"
-		,"“Just because they like to have gay sex together doesn't mean they're disgusting” -Erik"
-		,"“Also we didn't have these problems until michael invited everyone from here to timbuktu” -Erik"
-		,"“Statistics make more!!!” -Erik"
-		,"“That’s why you lost fucko!” -Erik"
-		,"“I ripped her apart” -Erik"
-		,"“We're spitting water that's been put out by a fire” -Erik"
-		,"“I want to be that guy that just fucks you.” -Erik"
-		,"“She could be a fox. I wouldn’t mind.” -Erik"
-		,"“I’ve never seen such a sexualized corpse” -Erik"
-		,"“All are one within the greater gas” -Erik"
-		,"“If you are what you eat then you are an ASS” -Erik"
-		,"“I'm J.K. Park; I steal people's wives from their scarves…” -Erik"
-		,"“You don't fuck America? How unpatriotic of you.” -Erik"
-		,"“I will. I will eat your type 7 ass”-Erik"
-		,"“Erik is the center of the world and he knows it” -Erik"
-		,"“His passive is that he doesn’t have to pay child support so it's a pretty powerful combo!”-Alex"
-		,"“That's hot” -Erik"
-		,"“Why do I find it therapeutic to break your heart?” -Erik"
-		,"“Orlando Bloom is hot”, “Orlando Bloom is hot. That’s not a quote it’s a fucking fact” -Erik"
-		,"“I’m starting with c_nt Broman” -Erik"
-		,"“I’m going to eat my own ass, brb.” (upon return)–>“Mmmmm that kiwi flavor.” -Erik"
-		,"“My selfish desires??? I’m a fucking tree!! Let me be your friend. (quieter) I want to be your friend...” -Erik"
-		,"“They could all be old brown dudes”-Jackson"
-		,"“Turn that poop into rage” -Erik"
-		,"“I know Georgians. They deserved it.” -Erik"
-		,"“Every time you do something like that I just have the irresistible urge to put bullets in you” -Jade, Erik-“That's pretty hot”- Erik"
-		,"“We're not playing Hearthstone you stupid bitch!” -Erik"
-		,"“I'm pretty sure if I poisoned your cats they would die” -Erik"
-		,"“West House is closed because Sarah Crawford is snorting coke in Cuba” -Erik"
-		,"“When people actually belong in a zoo, I get a little angry dude”-Jade"
-		,"“Technically you can’t suck; but you can still blow.”-Alex"
-		,"“Any time you start a sentence with ‘all I’m saying’ you should probably just shut up.”-Brandon @ Erik"
-		,"“Part of it is just that I like to see Anderson Cooper wet.” -Erik"
-		,"“What I’m trying to say is: you’re improving” -Erik"
-		,"“There’s no such thing as a good person there’s only people who haven’t realized.” -Erik"
-		,"“I like my men how I like my coffee; ground up and in the freezer.” -Erik"
-		,"“I don't know and I don’t care. I just want to eat your hair.” -Erik"
-		,"“Where's my smiley face?!?!?” -Erik"
-		,"“You’re playing with water”-Alex"
-		,"“That’s a big Gnar”-Jackson"
-		,"“I do not condone beastiality” -Erik"
-		,"“That's how I harvest my weed. Ehhhh! Ehhhhhh!!!” -Erik"
-		,"“My physical prowess is essentially average”-Alex “My physical Jackson is essentially average”-Erik"
-		,"“I don’t know I guess I just don’t want to be fucked by a toucan.”, “I mean I wasnt that against it.” -Erik"
-		,"“The concept of McDonalds as a concept is not immoral” -Erik"
-		,"“Yeaaaaah boiiiiiii this American Pie”-Jackson/Brandon"
-		,"“I'm either sketchy or suspiciously not sketchy” -Jackson"
-		,"“I’m arguably not ranting” -Erik"
-		,"“I don’t want to prove my point” -Erik"
-		,"“Floop is a fun word to say” -Erik"
-		,"“We’re all squeaky toys in the end” -Erik"
-		,"“DYLAN’S GOT HIM BY THE BALLS”-The eternal words of Jade"
-		,"“By acting like someone you are taking the action they would logically take. Whenever you take action that action becomes the action you would logically take as you are currently taking it and there for you are acting like yourself. So when you are acting like a person you are also acting like yourself because you would pretend to be them” -Erik"
-		,"“Waterboarding in the streets, senpai in the sheets.” -Erik"
-		,"“You don’t find stillborn babies appetizing?” -Erik"
-		,"“They have ridges everywhere. I wouldn’t be surprised if their penises were flat.” -Erik"
-		,"“Crippled people hate veterans” -Erik"
-		,"“Buffalo is the south of the north.” -Erik"
-		,"“Let’s drop kick Bella Wong” -Erik"
-		,"“I could see B-Wong on Fox news” -Erik"
-		,"“Who’s complaining about Erik at this table? I want names...I want addresses...I want family members” -Erik"
-		,"“We don’t need to outrun him, we just need to outrun Jackson”-Alex"
-		,"“You don’t have the philosophical knowledge to understand your meme” -Erik"
-		,"“The definition of a gas is that any gas anywhere is a gas” -Erik"
-		,"“My body is ardo” -Joey"
-		,"“Really, we couldn’t get ‘laid’?” -Erik"
-		,"“Snap back to reality, hey it’s Sean Hannity” -Erik"
-		,"“There’s no way we could lose this game” -Erik"
-		,"“There’s no way we could win this game” -Erik"
-		,"“Deadlydad69” -Erik"
-		,"“MAGES SHOULDN'T WEAR JACK SHIT”, “Unless your pants give you mana or some shit, you shouldn’t be wearing them!” -Erik"
-		]
-	def getQuote(self):
-		return self.quotes[randint(0, len(self.quotes))]
-		
+
+		self.quotes = sheet.get_all_records(empty2zero=False, head=1, default_blank='')#Uses sheets API to get everything from the google sheet
+
+	def getRandQuote(self):
+		rowcount = len(self.quotes)
+		return self.quotes[randint(0, (rowcount - 1))]
+
+	def getQuotes(self):
+		return self.quotes
